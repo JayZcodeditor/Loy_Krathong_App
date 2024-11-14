@@ -85,7 +85,7 @@ function Title() {
     };
 
     return (
-        <div className="flex flex-col items-center p-5 space-y-10">
+        <div className="flex flex-col items-center p-5 ">
             <Image
                 src={title}
                 width={800}
@@ -105,8 +105,8 @@ function Title() {
             </div>
 
             {isOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 h-screen w-screen overflow-hidden">
-                    <div className="bg-white rounded-lg p-6 w-full max-w-md mx-auto relative">
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 h-screen w-screen overflow-hidden p-3">
+                    <div className="bg-white rounded-xl p-6 w-full max-w-md mx-auto relative ">
                         <button
                             onClick={onClose}
                             className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
@@ -154,9 +154,8 @@ function Title() {
                                 {katongOptions.map((katong, index) => (
                                     <div
                                         key={index}
-                                        className={`border p-2 rounded cursor-pointer ${
-                                            selectedKatong === index + 1 ? 'border-blue-500' : 'border-gray-300'
-                                        }`}
+                                        className={`border p-2 rounded cursor-pointer ${selectedKatong === index + 1 ? 'border-blue-500' : 'border-gray-300'
+                                            }`}
                                         onClick={() => setSelectedKatong(index + 1)}
                                     >
                                         <Image src={katong} alt={`Katong ${index + 1}`} className="w-full h-16 object-cover" />
