@@ -1,0 +1,13 @@
+รายละเอียด 
+
+http://localhost:3000/api/fetch_katong
+: นี่คือ API สำหรับการ ดึงข้อมูลกระทงจาก Mongo
+
+http://localhost:3000/api/make_katong
+: นี่คือ API สำหรับการ สร้างกระทง มี parameter คือ
+{
+  "name": "ชื่อคน",
+  "wish": "คำอธิฐาน",
+  "katong": "รูปแบบกระทง", หมายเหตุ: 1-8
+  "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/4QBmRXhpZgAATU0AKgAAAAgAAkAAAAMAAAABAAEAAAQAAAABAAEAAABNAAIAAAAmAAEAAABKAABPAAIAAAAmAAEAAABSAABQAAIAAAAmAAEAAABVAABWAAIAAAAmAAEAAABYAABZAAIAAAAmAAEAAABaAABbAAIAAAAmAAEAAABcAABdAAIAAAAmAAEAAABeAABfAAIAAAAmAAEAAA..(base64 image data continues)"
+}
