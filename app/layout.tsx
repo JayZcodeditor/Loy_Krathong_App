@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
+import { Kanit } from "next/font/google";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const kanit = Kanit({
+  weight: ['300', '400', '500', '700'],
+  subsets: ["thai", "latin"],
+  variable: '--font-kanit',  // เพิ่ม variable
 });
 
 export const metadata: Metadata = {
@@ -27,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[url('/images/bg_katong/DALL·E-2024-11-14-20.59.png')] bg-cover bg-center`}
+        className={`${kanit.className} antialiased min-h-screen bg-[url('/images/bg_katong/DALL·E-2024-11-14-20.59.png')] bg-cover bg-center`}
       >
         {children}
       </body>
