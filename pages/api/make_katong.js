@@ -1,10 +1,11 @@
 // pages/api/make_katong.js
 
-import dbConnect from '../../lib/dbConnect';
-import Blessing from '../../models/Blessing';
+import clientPromise from '../../lib/mongodb';
 
 export default async function handler(req, res) {
-    await dbConnect();
+    // เชื่อมต่อกับ MongoDB
+    const client = await clientPromise;
+    const db = client.db('katong_db'); // ชื่อฐานข้อมูลที่คุณต้องการใช้
 
     if (req.method === 'POST') {
         const { name, wish, katong, image } = req.body;
@@ -14,8 +15,8 @@ export default async function handler(req, res) {
         }
 
         try {
-            const blessing = new Blessing({ name, wish, katong, image });
-            const result = await blessing.save();
+            // บันทึกข้อมูลลงใน MongoDB โดยตรง
+            const result = await db.collection('blessing_data').insertOne({ name, wish, katong, image });
             res.status(201).json({ success: true, data: result });
         } catch (error) {
             res.status(500).json({ success: false, message: 'Error inserting data', error });
