@@ -66,3 +66,54 @@
       font-size:24px;
     }
   }
+
+
+.waves {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.katong-container {
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 2;
+}
+
+.katong-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float 10s linear infinite;
+    transform-origin: center;
+}
+
+.katong-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.katong-text {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(-100vw);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}

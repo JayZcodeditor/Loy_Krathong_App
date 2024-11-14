@@ -48,11 +48,36 @@ function Title() {
         };
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const formData = { name, wish, imageBase64, selectedKatong };
-        console.log(formData);
-        setIsOpen(false); // ปิดโมดัลหลังจากส่งข้อมูล
+        const formData = { 
+            name, 
+            wish, 
+            katong: selectedKatong, // เปลี่ยนชื่อเป็น katong ตามที่ API ต้องการ
+            image: imageBase64 // ส่งเป็น base64
+        };
+        console.log("ข้อมูลเมื่อสรา้งกระทง:",formData)
+    
+        try {
+            const response = await fetch('http://localhost:3000/api/make_katong', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const result = await response.json();
+            console.log('Data successfully submitted:', result);
+        } catch (error) {
+            console.error('Error submitting data:', error);
+        } finally {
+            setIsOpen(false); // ปิดโมดัลหลังจากส่งข้อมูล
+        }
     };
 
     const onClose = () => {
@@ -72,7 +97,7 @@ function Title() {
             <div className="flex flex-col justify-center items-center space-x-5 w-full">
                 <span>จำนวนธงที่มีการสร้างขึ้น</span>
                 <button 
-                    className="bg-white rounded-lg p-2 text-2xl hover:bg-gray-100 transition-colors mt-9"
+                    className="bg-[#fde200] rounded-lg p-2 text-2xl hover:bg-gray-100 transition-colors mt-9"
                     onClick={() => setIsOpen(true)}
                 >
                     สร้างกระทง
