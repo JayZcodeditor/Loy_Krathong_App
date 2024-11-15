@@ -120,22 +120,18 @@ function Title({ onFetchData }: TitleProps) {
         priority
       />
       <div className="flex flex-col justify-center items-center space-x-5 w-full">
-        <div className="count-container pt-5">
-          <div className="count-content">
-            <span className="count-title">อัปเดตจำนวนกระทงล่าสุด</span>
-            <div className="count-number">
-              <img
-                src="https://s.isanook.com/an/0/loykrathong/static/images/2024/icon/ic-krathong.svg"
-                alt="Kratong Icon"
-                className="kratong-icon"
-              />
-              {count.toLocaleString()}{" "}
-              {/* แสดงจำนวนกระทงและจัดรูปแบบด้วย comma */}
-            </div>
-          </div>
-        </div>
+      <div className="flex items-center gap-2 mt-5">
+  <span className="px-2 text-5xl font-bold md:text-7xl text-white flex items-baseline">
+    <span className="text-lg md:text-2xl font-thin mr-1">จำนวนกระทง{'\u00A0'}</span>
+    <span>{count.toLocaleString()}</span>
+    <span className="text-lg md:text-2xl font-thin ml-1">{'\u00A0'}กระทง</span>
+  </span>
+</div>
+
+
+
         <button
-          className="bg-transparent border-2 border-[#faff26] rounded-lg p-2 text-2xl font-bold text-[#fff] hover:bg-[#faff26] hover:text-black transition-colors mt-9"
+          className="bg-transparent border-2 border-[#fff] rounded-lg p-2 text-2xl font-bold text-[#fff] hover:bg-[#faff26] hover:text-black transition-colors mt-9"
           onClick={() => setIsOpen(true)}
         >
           สร้างกระทง
