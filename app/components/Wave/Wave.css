@@ -60,7 +60,7 @@
       min-height: 50vh; /* ให้ความสูงเต็มครึ่งจอ */
   }
   .katong-container {
-      bottom: 10px; /* เพิ่มช่องว่างด้านล่างเล็กน้อย */
+      bottom: 2px; /* เพิ่มช่องว่างด้านล่างเล็กน้อย */
       flex-wrap: wrap; /* จัดเรียงเป็นแถวถ้าพื้นที่ไม่พอ */
       gap: 10px; /* ลดระยะห่างระหว่างกระทง */
       height: auto; /* ให้ความสูงเปลี่ยนแปลงตามเนื้อหา */
@@ -80,7 +80,7 @@
 /* Kratong Container */
 .katong-container {
   position: relative;
-  bottom: 10px;
+  bottom: 5px;
   width: 100%;
   height: 20%; /* ความสูงของ container */
   display: flex;
