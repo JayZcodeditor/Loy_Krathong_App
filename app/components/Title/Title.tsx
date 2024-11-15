@@ -222,18 +222,18 @@ function Title({ onFetchData }: TitleProps) {
                 ))}
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-blue-500 text-white p-2 rounded font-semibold hover:bg-blue-600"
-              >
-                บันทึกข้อมูล
-              </button>
-            </form>
-          </div>
+                            <button
+                                type="submit"
+                                className="w-full bg-blue-500 text-white p-2 rounded font-semibold hover:bg-blue-600"
+                            >
+                                บันทึกข้อมูล
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }
 
 export default Title;
