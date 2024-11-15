@@ -10,6 +10,7 @@ import k5 from '../../../public/images/kratong/k5.png';
 import k6 from '../../../public/images/kratong/k6.png';
 import k7 from '../../../public/images/kratong/k7.png';
 import k8 from '../../../public/images/kratong/k8.png';
+import { apiUrl } from '@/app/config/apisetting';
 
 function Title() {
     const [name, setName] = useState<string>('');
@@ -59,7 +60,7 @@ function Title() {
         console.log("ข้อมูลเมื่อสรา้งกระทง:",formData)
     
         try {
-            const response = await fetch('http://localhost:3000/api/make_katong', {
+            const response = await fetch(`${apiUrl}/api/make_katong`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

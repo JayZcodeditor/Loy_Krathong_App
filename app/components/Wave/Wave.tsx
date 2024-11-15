@@ -12,6 +12,7 @@ import k6 from '../../../public/images/kratong/k6.png';
 import k7 from '../../../public/images/kratong/k7.png';
 import k8 from '../../../public/images/kratong/k8.png';
 import "./Wave.css";
+import { apiUrl } from '@/app/config/apisetting';
 
 interface KatongData {
     name: string;
@@ -28,7 +29,7 @@ export default function Wave() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/api/fetch_katong');
+                const response = await fetch(`${apiUrl}/api/fetch_katong`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
