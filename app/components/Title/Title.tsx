@@ -145,7 +145,8 @@ function Title({ onFetchData }: TitleProps) {
                     <div className="bg-white rounded-xl p-6 w-full max-w-md mx-auto relative overflow-y-auto max-h-screen">
                         <button
                             onClick={onClose}
-                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                            className="absolute top-3 right-3 text-white rounded-full p-2 bg-red-500 h-10 w-10 flex items-center justify-center"
+
                         >
                             X
                         </button>
