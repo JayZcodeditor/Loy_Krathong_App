@@ -117,13 +117,13 @@ function Title({ onFetchData }: TitleProps) {
                 priority
             />
             <div className="flex flex-col justify-center items-center space-x-5 w-full">
-            <div className="flex items-center gap-2 mt-6">
-  <span className="px-2 text-5xl font-bold md:text-7xl text-white flex items-baseline">
-    <span className="text-lg md:text-2xl font-thin mr-1">จำนวนกระทง{'\u00A0'}</span>
-    <span>{count.toLocaleString()}</span>
-    <span className="text-lg md:text-2xl font-thin ml-1">กระทง</span>
-  </span>
-</div>
+                <div className="flex items-center gap-2 mt-6">
+                    <span className="px-2 text-5xl font-bold md:text-7xl text-white flex items-baseline">
+                        <span className="text-lg md:text-2xl font-thin mr-1">จำนวนกระทง{'\u00A0'}</span>
+                        <span>{count.toLocaleString()}</span>
+                        <span className="text-lg md:text-2xl font-thin ml-1">กระทง</span>
+                    </span>
+                </div>
 
                 <button
                     className="bg-transparent border-2 border-[#faff26] rounded-lg p-2 text-2xl font-bold text-[#fff] hover:bg-[#faff26] hover:text-black transition-colors mt-9"
@@ -134,12 +134,11 @@ function Title({ onFetchData }: TitleProps) {
             </div>
 
             {isOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 h-screen w-screen overflow-auto p-3">
-                    <div className="bg-white rounded-xl p-6 w-full max-w-md mx-auto relative overflow-y-auto max-h-screen">
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 h-screen w-screen p-3">
+                    <div className="bg-white rounded-xl p-6 w-full max-w-md mx-auto relative overflow-y-auto max-h-[80vh]">
                         <button
                             onClick={onClose}
                             className="absolute top-3 right-3 text-white rounded-full p-2 bg-red-500 h-10 w-10 flex items-center justify-center"
-
                         >
                             X
                         </button>
@@ -178,7 +177,6 @@ function Title({ onFetchData }: TitleProps) {
                                 accept="image/*"
                                 required
                             />
-
                             <label className="block text-gray-700 font-medium mb-2">
                                 เลือกกระทง
                             </label>
@@ -186,7 +184,10 @@ function Title({ onFetchData }: TitleProps) {
                                 {katongOptions.map((katong, index) => (
                                     <div
                                         key={index}
-                                        className={`border p-2 rounded cursor-pointer ${selectedKatong === index + 1 ? "border-orange-500 border-4" : "border-gray-300"}`}
+                                        className={`border p-2 rounded cursor-pointer ${selectedKatong === index + 1
+                                                ? "border-orange-500 border-4"
+                                                : "border-gray-300"
+                                            }`}
                                         onClick={() => setSelectedKatong(index + 1)}
                                     >
                                         <Image
@@ -207,6 +208,7 @@ function Title({ onFetchData }: TitleProps) {
                     </div>
                 </div>
             )}
+
         </div>
     );
 }
