@@ -173,10 +173,11 @@ function Title({ onFetchData }: TitleProps) {
                             <input
                                 type="file"
                                 onChange={handleImageChange}
-                                className="w-full border border-gray-300 p-2 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                className="w-full p-3 rounded border border-gray-300 text-gray-700 cursor-pointer bg-white hover:bg-gray-100 hover:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500"
                                 accept="image/*"
                                 required
                             />
+
                             <label className="block text-gray-700 font-medium mb-2">
                                 เลือกกระทง
                             </label>
