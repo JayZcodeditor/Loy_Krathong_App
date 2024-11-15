@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${kanit.className} antialiased min-h-screen bg-[url('/images/bg_katong/DALL·E-2024-11-14-20.59.png')] bg-cover bg-[center_100%]`}
+        className={`${kanit.className} antialiased min-h-screen bg-[url('/images/bg_katong/DALL·E-2024-11-14-20.59.png')] bg-cover bg-[center_100%] bg-no-repeat`}
       >
         {children}
       </body>

@@ -56,16 +56,13 @@
   /*Shrinking for mobile*/
   @media (max-width: 768px) {
     .waves {
-      height:100px;
-      min-height:40px;
+        height: 100vh;
+        min-height: 100vh; /* ปรับความสูงให้เต็มหน้าจอ */
     }
-    .content {
-      height:30vh;
+    .katong-container {
+        bottom: 0;
     }
-    h1 {
-      font-size:24px;
-    }
-  }
+}
 
 
 .waves {
@@ -77,13 +74,16 @@
 }
 
 .katong-container {
-    position: absolute;
-    bottom: 80px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    z-index: 2;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center; /* หรือใช้ space-between */
+  gap: 20px; /* ปรับระยะห่างระหว่างกระทง */
+  z-index: 2;
 }
+
 
 .katong-item {
     position: relative;
@@ -110,10 +110,22 @@
 }
 
 @keyframes float {
-    0% {
-        transform: translateX(-100vw);
-    }
-    100% {
-        transform: translateX(100vw);
-    }
+  0% {
+    transform: translate(-100vw, 0);
 }
+25% {
+    transform: translate(-50vw, -10px);
+}
+50% {
+    transform: translate(0, 0);
+}
+75% {
+    transform: translate(50vw, -10px);
+}
+100% {
+    transform: translate(100vw, 0);
+}
+}
+
+
+
