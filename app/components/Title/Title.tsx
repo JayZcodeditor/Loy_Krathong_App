@@ -12,6 +12,7 @@ import k7 from "../../../public/images/kratong/k7.png";
 import k8 from "../../../public/images/kratong/k8.png";
 import { apiUrl } from "@/app/config/apisetting";
 import "./Title.css";
+import Swal from "sweetalert2"
 
 const katongOptions = [k1, k2, k3, k4, k5, k6, k7, k8];
 
@@ -32,15 +33,20 @@ function Title({ onFetchData }: TitleProps) {
         try {
             const response = await fetch(`${apiUrl}/api/fetch_katong`);
             if (!response.ok) throw new Error("Failed to fetch data");
+
             const result = await response.json();
+
+            // ตรวจสอบว่า result.data เป็น Array และแสดงข้อมูลทั้งหมด
             if (Array.isArray(result.data)) {
-                setCount(result.data.length);
-                onFetchData(result.data);
+                setCount(result.data.length); // นับจำนวนทั้งหมด
+                onFetchData(result.data);    // ส่งข้อมูลทั้งหมดไปยัง Props หรือ State
             }
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
+
+
 
     useEffect(() => {
         fetchData();
@@ -95,6 +101,23 @@ function Title({ onFetchData }: TitleProps) {
             const result = await response.json();
             console.log("Data successfully submitted:", result);
             fetchData();
+
+            // Show success alert
+            Swal.fire({
+                icon: 'success',
+                title: 'ลอยเสร็จสิ้น',
+                text: 'ข้อมูลถูกส่งเรียบร้อยแล้ว',
+                confirmButtonText: 'ตกลง'
+            });
+
+            // Clear form data
+            setName("");
+            setWish("");
+            setSelectedKatong(null);
+            setImage(null);
+            setImageBase64(null);
+
+            
         } catch (error) {
             console.error("Error submitting data:", error);
         } finally {
@@ -185,8 +208,8 @@ function Title({ onFetchData }: TitleProps) {
                                     <div
                                         key={index}
                                         className={`border p-2 rounded cursor-pointer ${selectedKatong === index + 1
-                                                ? "border-orange-500 border-4"
-                                                : "border-gray-300"
+                                            ? "border-orange-500 border-4"
+                                            : "border-gray-300"
                                             }`}
                                         onClick={() => setSelectedKatong(index + 1)}
                                     >
