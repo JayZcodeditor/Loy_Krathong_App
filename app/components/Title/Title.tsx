@@ -51,14 +51,14 @@ function Title() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const formData = { 
-            name, 
-            wish, 
+        const formData = {
+            name,
+            wish,
             katong: selectedKatong, // เปลี่ยนชื่อเป็น katong ตามที่ API ต้องการ
             image: imageBase64 // ส่งเป็น base64
         };
-        console.log("ข้อมูลเมื่อสรา้งกระทง:",formData)
-    
+        console.log("ข้อมูลเมื่อสรา้งกระทง:", formData)
+
         try {
             const response = await fetch(`${apiUrl}/api/make_katong`, {
                 method: 'POST',
@@ -67,11 +67,11 @@ function Title() {
                 },
                 body: JSON.stringify(formData),
             });
-    
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-    
+
             const result = await response.json();
             console.log('Data successfully submitted:', result);
         } catch (error) {
@@ -97,7 +97,7 @@ function Title() {
             />
             <div className="flex flex-col justify-center items-center space-x-5 w-full">
                 <span>จำนวนธงที่มีการสร้างขึ้น</span>
-                <button 
+                <button
                     className="bg-[#fde200] rounded-lg p-2 text-2xl hover:bg-gray-100 transition-colors mt-9"
                     onClick={() => setIsOpen(true)}
                 >
@@ -110,11 +110,12 @@ function Title() {
                     <div className="bg-white rounded-xl p-6 w-full max-w-md mx-auto relative ">
                         <button
                             onClick={onClose}
-                            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                            className="absolute top-3 right-3 text-white rounded-full bg-red-600 p-2 w-8 h-8 flex items-center justify-center"
                         >
                             X
                         </button>
-                        <h2 className="text-xl font-semibold mb-4 text-center">สร้างกระทง</h2>
+
+                        <h2 className="text-4xl font-semibold mb-4 text-center">สร้างกระทง</h2>
                         <form onSubmit={handleSubmit}>
                             <label className="block text-gray-700 font-medium">ชื่อ (Name)</label>
                             <input
@@ -122,16 +123,17 @@ function Title() {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="กรอกชื่อของคุณ"
-                                className="w-full border border-gray-300 p-2 rounded mb-2"
+                                className="w-full border border-gray-300 p-2 rounded mb-2 focus:border-orange-500"
                                 required
                             />
+
 
                             <label className="block text-gray-700 font-medium">คำอธิษฐาน (Wish)</label>
                             <textarea
                                 value={wish}
                                 onChange={(e) => setWish(e.target.value)}
                                 placeholder="ใส่คำอธิษฐาน"
-                                className="w-full border border-gray-300 p-2 rounded mb-2"
+                                className="w-full border border-gray-300 p-2 rounded mb-2 focus:border-orange-500"
                                 required
                             />
 
@@ -139,14 +141,20 @@ function Title() {
                             <input
                                 type="file"
                                 onChange={handleImageChange}
-                                className="w-full border border-gray-300 p-2 rounded mb-2"
+                                className="w-full border border-gray-300 p-2 rounded mb-2 focus:border-orange-500"
                                 accept="image/*"
                                 required
                             />
 
                             {imagePreview && (
                                 <div className="my-2">
-                                    <img src={imagePreview} alt="Selected Image Preview" className="w-full h-32 object-cover rounded" />
+                                    <Image
+                                        src={imagePreview}
+                                        alt="Selected Image Preview"
+                                        className="w-full object-cover rounded"
+                                        width={500}
+                                        height={128} // ปรับให้ตรงกับ h-32 (32 x 4 = 128px)
+                                    />
                                 </div>
                             )}
 
@@ -155,20 +163,20 @@ function Title() {
                                 {katongOptions.map((katong, index) => (
                                     <div
                                         key={index}
-                                        className={`border p-2 rounded cursor-pointer ${selectedKatong === index + 1 ? 'border-blue-500' : 'border-gray-300'
+                                        className={`border p-2 rounded cursor-pointer ${selectedKatong === index + 1 ? 'border-orange-500 border-4' : 'border-gray-300'
                                             }`}
                                         onClick={() => setSelectedKatong(index + 1)}
                                     >
-                                        <Image src={katong} alt={`Katong ${index + 1}`} className="w-full h-16 object-cover" />
+                                        <Image src={katong} alt={`Katong ${index + 1}`} className="w-full h-22 object-cover" />
                                     </div>
                                 ))}
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-blue-500 text-white p-2 rounded font-semibold hover:bg-blue-600"
+                                className="w-full bg-orange-500 text-white p-2 rounded font-semibold hover:bg-orange-600"
                             >
-                                บันทึกข้อมูล
+                                ลอยกระทง
                             </button>
                         </form>
                     </div>
