@@ -148,11 +148,11 @@ export default function Wave() {
             </svg> */}
 
             {/* Kratong Container */}
-            <div className="katong-container border border-red-500">
+            <div className="katong-container">
                 {displayData.map((item, index) => (
                     <div
                         key={`${item.name}-${index}-${Date.now()}`}
-                        className="katong-item border border-green-500"
+                        className="katong-item border"
                         style={{
                             ...item.styles,
                             transition: 'opacity 1s ease-in-out'
