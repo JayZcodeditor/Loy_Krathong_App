@@ -33,14 +33,16 @@ function Title({ onFetchData }: TitleProps) {
             const response = await fetch(`${apiUrl}/api/fetch_katong`);
             if (!response.ok) throw new Error("Failed to fetch data");
             const result = await response.json();
+
             if (Array.isArray(result.data)) {
                 setCount(result.data.length);
-                onFetchData(result.data);
+                onFetchData([...result.data]); // อัปเดตข้อมูลใหม่
             }
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
+
 
     useEffect(() => {
         fetchData();
@@ -185,8 +187,8 @@ function Title({ onFetchData }: TitleProps) {
                                     <div
                                         key={index}
                                         className={`border p-2 rounded cursor-pointer ${selectedKatong === index + 1
-                                                ? "border-orange-500 border-4"
-                                                : "border-gray-300"
+                                            ? "border-orange-500 border-4"
+                                            : "border-gray-300"
                                             }`}
                                         onClick={() => setSelectedKatong(index + 1)}
                                     >
