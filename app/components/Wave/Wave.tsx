@@ -86,8 +86,14 @@ export default function Wave({ katongData }: WaveProps) {
                 }}
             >
                 <div className="katong-text">
-                    <p className="katong-wish">{item.wish}</p>
-                    <p className="katong-name">{item.name}</p>
+                <p
+  className="katong-wish"
+  style={{
+    fontSize: item.wish.length > 20 ? "0.5rem" : "1rem", // ถ้ายาวเกิน 50 ตัวอักษร ลดขนาดตัวอักษร
+  }}
+>
+  {item.wish}
+</p>                    <p className="katong-name">{item.name}</p>
                     
                     {/* รูปภาพผู้ใช้จะถูกซ้อนด้านหน้า */}
                     <div className="katong-base64-image">
