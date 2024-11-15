@@ -32,16 +32,19 @@ function Title({ onFetchData }: TitleProps) {
         try {
             const response = await fetch(`${apiUrl}/api/fetch_katong`);
             if (!response.ok) throw new Error("Failed to fetch data");
+
             const result = await response.json();
 
+            // ตรวจสอบว่า result.data เป็น Array และแสดงข้อมูลทั้งหมด
             if (Array.isArray(result.data)) {
-                setCount(result.data.length);
-                onFetchData([...result.data]); // อัปเดตข้อมูลใหม่
+                setCount(result.data.length); // นับจำนวนทั้งหมด
+                onFetchData(result.data);    // ส่งข้อมูลทั้งหมดไปยัง Props หรือ State
             }
         } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
+
 
 
     useEffect(() => {
