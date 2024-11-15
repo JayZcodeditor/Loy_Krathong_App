@@ -53,78 +53,122 @@
       transform: translate3d(85px,0,0);
     }
   }
-  /*Shrinking for mobile*/
-  @media (max-width: 768px) {
-    .waves {
-        height: 100vh;
-        min-height: 100vh; /* ปรับความสูงให้เต็มหน้าจอ */
-    }
-    .katong-container {
-        bottom: 0;
-    }
+/* Shrinking for mobile */
+@media (max-width: 768px) {
+  .waves {
+      height: 50vh; /* ลดความสูงลงสำหรับหน้าจอขนาดเล็ก */
+      min-height: 50vh; /* ให้ความสูงเต็มครึ่งจอ */
+  }
+  .katong-container {
+      bottom: 10px; /* เพิ่มช่องว่างด้านล่างเล็กน้อย */
+      flex-wrap: wrap; /* จัดเรียงเป็นแถวถ้าพื้นที่ไม่พอ */
+      gap: 10px; /* ลดระยะห่างระหว่างกระทง */
+      height: auto; /* ให้ความสูงเปลี่ยนแปลงตามเนื้อหา */
+      justify-content: center; /* จัดตำแหน่งให้อยู่กึ่งกลาง */
+  }
 }
 
-
+/* Waves Background */
 .waves {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    z-index: 1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
 }
 
+/* Kratong Container */
 .katong-container {
-  position: absolute;
+  position: relative;
   bottom: 10px;
   width: 100%;
-  height: 20%;
+  height: 20%; /* ความสูงของ container */
   display: flex;
-  justify-content: center; /* หรือใช้ space-between */
-  gap: 20px; /* ปรับระยะห่างระหว่างกระทง */
+  justify-content: center;
+  flex-wrap: nowrap; /* ไม่ให้แถวใหม่เกิดขึ้นบนหน้าจอใหญ่ */
+  align-items: flex-end; /* จัดกระทงให้อยู่ล่างสุด */
+  gap: 20px; /* ระยะห่างระหว่างกระทง */
   z-index: 2;
 }
 
-
 .katong-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: float 10s linear infinite;
-    transform-origin: center;
-}
-
-.katong-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
+  position: absolute;
+  animation: float 25s linear; /* 25 วินาทีตรงกับ duration ใน useEffect */
+  will-change: transform, opacity;
+  transition: opacity 3s ease; /* สมูทเวลา fade out */
 }
 
 .katong-text {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 5px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 12px;
-    margin-top: 5px;
+  top:40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px; /* ลดระยะห่างระหว่างข้อความและรูป */
+}
+
+/* Image (Profile Picture) */
+.katong-base64-image {
+  position: absolute;
+  bottom: 50px; /* เลื่อนลงมาใกล้กับกระทง */
+  z-index: 2; /* ให้อยู่ด้านหน้าของกระทง */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  transform: translateY(50%); /* ซ้อนรูปภาพให้อยู่ด้านบนกระทง */
+}
+
+.katong-item .katong-text + .katong-base64-image {
+  margin-top: -15px; /* เลื่อนรูปลงมาให้ชิดกับกระทง */
+}
+
+.katong-image-container {
+  position: relative;
+  z-index: 1; /* กระทงอยู่ด้านหลัง */
+}
+
+.katong-wish {
+  padding: 4px; /* เพิ่ม padding */
+  background-color: rgba(128, 128, 128, 0.7); /* สีเทาพร้อมโปร่งแสง */
+  border: 1px solid gray; /* กำหนดขอบสีเทา */
+  border-radius: 5px; /* มุมโค้ง */
+  color: rgb(22, 7, 8); /* สีข้อความ */
+  text-align: center;
+  width: fit-content;
+}
+
+.katong-name {
+  /* padding: 8px; เพิ่ม padding */
+  color: black; /* สีข้อความให้เป็นสีขาว */
+  font-weight: bold; /* ข้อความตัวหนา */
+  text-align: center;
+  z-index: 9999; /* ให้ z-index สูงที่สุด */
+  width: fit-content;
+  text-transform: uppercase; /* เปลี่ยนเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+  margin-bottom: -40px;/* เพิ่ม margin-top เพื่อให้ลงมาข้างล่าง */
+  /* เอฟเฟกต์เนออน */
+  text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #fff, 
+    0 0 20px #f7c500, /* สีชมพูสด */
+    0 0 30px #f7c500, 
+    0 0 40px #f7c500, 
+    0 0 50px #f7c500, 
+    0 0 60px #f7c500;
 }
 
 @keyframes float {
   0% {
-    transform: translate(-100vw, 0);
-}
-25% {
-    transform: translate(-50vw, -10px);
-}
-50% {
-    transform: translate(0, 0);
-}
-75% {
-    transform: translate(50vw, -10px);
-}
-100% {
-    transform: translate(100vw, 0);
-}
+      transform: translateX(-100px); /* เริ่มจากนอกจอด้านซ้าย */
+  }
+  100% {
+      transform: translateX(calc(100vw + 100px)); /* ออกนอกจอด้านขวา */
+  }
 }
 
 

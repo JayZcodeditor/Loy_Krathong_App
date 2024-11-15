@@ -1,0 +1,38 @@
+.count-container {
+    background-color: rgba(0, 0, 0, 0.7); /* พื้นหลังสีดำโปร่งใส */
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fde200;
+    font-family: Arial, sans-serif;
+    max-width: 300px;
+    /* margin: auto; */
+    margin-top: 30px;
+  }
+  
+  .count-content {
+    text-align: center;
+  }
+  
+  .count-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .count-number {
+    display: flex;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .kratong-icon {
+    width: 40px; /* ปรับขนาดไอคอนกระทงตามต้องการ */
+    height: 40px;
+    margin-right: 10px;
+  }
+  
