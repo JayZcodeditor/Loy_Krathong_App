@@ -9,8 +9,11 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
         try {
-            // ดึงข้อมูลทั้งหมดจาก collection 'blessing_data'
-            const data = await db.collection('blessing_data').find({}).toArray();
+            // ดึงข้อมูลจาก collection 'blessing_data' ยกเว้นฟิลด์ 'image'
+            const data = await db.collection('blessing_data')
+                .find({}, { projection: { image: 0 } }) // ไม่ดึงฟิลด์ 'image'
+                .toArray();
+                
             res.status(200).json({ success: true, data });
         } catch (error) {
             res.status(500).json({ success: false, message: 'Error fetching data', error });

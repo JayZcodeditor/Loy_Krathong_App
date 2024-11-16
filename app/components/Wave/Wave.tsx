@@ -103,16 +103,18 @@ export default function Wave({ katongData }: WaveProps) {
                 {item.wish}
               </p>{" "}
               <p className="katong-name">{item.name}</p>
+              
               {/* รูปภาพผู้ใช้จะถูกซ้อนด้านหน้า */}
-              <div className="katong-base64-image">
+              {/* <div className="katong-base64-image">
                 <Image
                   src={getImageSrc(item.image)}
                   alt="Uploaded Katong Image"
-                  width={50} /* ปรับขนาดให้เล็กลง */
+                  width={50} 
                   height={50}
                   objectFit="cover"
                 />
-              </div>
+              </div> */}
+
               {/* รูปกระทงจะอยู่ด้านหลัง */}
               <div className="katong-image-container">
                 <Image
