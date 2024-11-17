@@ -85,6 +85,22 @@ function Title({ onFetchData }: TitleProps) {
             image: imageBase64,
         };
 
+        // แสดง Swal เมื่อตอนเริ่มกระบวนการ
+        Swal.fire({
+            icon: 'info',
+            title: 'กำลังลอยกระทง',
+            text: 'กรุณารอสักครู่ กระทงพร้อมลอยแล้ว...',
+            allowOutsideClick: false, // ป้องกันการปิดหน้าต่างโดยไม่ได้ตั้งใจ
+            didOpen: () => {
+                Swal.showLoading(); // แสดง Loading Indicator
+            },
+            // customClass: {
+            //     popup: 'custom-swal-popup', 
+            //     title: 'custom-swal-title',
+            //     htmlContainer: 'custom-swal-text'
+            // },
+        });
+
         try {
             const response = await fetch(`${apiUrl}/api/make_katong`, {
                 method: "POST",
